@@ -1,0 +1,2 @@
+Hamza,25,Chelsea,177.0,170.0,forward
+Hazard,27,Madrid,170.0,180.0,midfielder
