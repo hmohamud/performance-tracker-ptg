@@ -1,2 +1,3 @@
-Hamza,25,Chelsea,177.0,170.0,forward
-Hazard,27,Madrid,170.0,180.0,midfielder
+Hamza,27,Chelsea,177.0,170.0,forward,10,12,22
+Hazard,25,Madrid,170.0,180.0,midfielder,0,0,0
+Oscar,22,Bayern,186.0,196.0,defender,0,0,0

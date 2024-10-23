@@ -14,6 +14,7 @@ public class Main {
 		final String ANSI_RESET = "\u001B[0m";
 		final String ANSI_GREEN = "\u001B[32m";
 		final String ANSI_BLUE = "\u001B[34m";
+		final String ANSI_BOLD = "\033[0;1m";
 		
 		//Variable To Store User Input
 		int choice = 0;
@@ -38,12 +39,11 @@ public class Main {
 			
 			
 			//Choices For User Input
-			System.out.println("1. Player Profile");
-			System.out.println("2. Stat Logging");
-			System.out.println("3. Workout Tracking");
-			System.out.println("4. BMI Calculator");
-			System.out.println("5. Performance Comparison");
-			System.out.println("6. Exit\n");
+			System.out.println(ANSI_BOLD + "1. " + ANSI_RESET + "Player Profile");
+			System.out.println(ANSI_BOLD + "2. " + ANSI_RESET + "Stat Logging");
+			System.out.println(ANSI_BOLD + "3. " + ANSI_RESET + "BMI Calculator");
+			System.out.println(ANSI_BOLD + "4. " + ANSI_RESET + "Performance Comparison");
+			System.out.println(ANSI_BOLD + "5. " + ANSI_RESET + "Exit\n");
 			
 			try {
 				//Take User Input
@@ -52,7 +52,7 @@ public class Main {
 				myScan.nextLine();
 				
 				//Check If Number User Provided Is Within Range
-				if (choice < 1 || choice > 6) {
+				if (choice < 1 || choice > 5) {
 					throw new IllegalArgumentException("Your choice is out of range!");
 				}
 			}
@@ -83,17 +83,16 @@ public class Main {
 					break;
 				case 2:
 					//Case To Go To Stat Logging
+					LogStats p2 = new LogStats();
+					p2.logMenu();
 					break;
 				case 3:
-					//Case To Go To Workout Tracking
-					break;
-				case 4:
 					//Case To Go To BMI Calc
 					break;
-				case 5:
+				case 4:
 					//Case For Performance Comparison
 					break;
-				case 6:
+				case 5:
 					//Case For Exit Program
 					System.out.println(ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Thanks for using Path to Glory...");
 					System.out.println("Exiting..." + ANSI_RESET);
@@ -101,7 +100,7 @@ public class Main {
 					myScan.close();
 					break;
 			}
-		} while (choice != 6);
+		} while (choice != 5);
 		
 		
 		

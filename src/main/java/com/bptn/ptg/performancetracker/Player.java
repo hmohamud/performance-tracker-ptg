@@ -7,6 +7,7 @@ abstract class Player {
 	private String teamName;
 	private double height;
 	private double weight;
+	private int gamesPlayed;
 	
 	public Player(String name, int age, String teamName, double height, double weight) {
 		this.name = name;
@@ -14,6 +15,7 @@ abstract class Player {
 		this.teamName = teamName;
 		this.height = height;
 		this.weight = weight;
+		this.gamesPlayed = 0;
 	}
 	
 	public String getName() {
@@ -34,6 +36,14 @@ abstract class Player {
 	
 	public double getWeight() {
 		return weight;
+	}
+	
+	public int getGamesPlayed() {
+		return gamesPlayed;
+	}
+	
+	public void setGamesPlayed(int games) {
+		gamesPlayed += games;
 	}
 	
 	public abstract String getPosition();

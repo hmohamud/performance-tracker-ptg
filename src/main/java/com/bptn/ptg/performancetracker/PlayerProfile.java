@@ -41,20 +41,26 @@ public class PlayerProfile {
 			
 			try {
 				//prompt for user's name
-				System.out.println("Enter player's name: ");
+				System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter player's name, or type q to return: " + ANSI_RESET);
 				String name = myScan.nextLine();
+				
 				if(name.charAt(0) >= 48 && name.charAt(0) <= 57) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid name, try again!" + ANSI_RESET);
 					continue;
 				}
 				
+				if(name.equalsIgnoreCase("q")) {
+					myScan.close();
+					return;
+				}
+				
 				//prompt for user's age
-				System.out.println("Enter player's age: ");
+				System.out.println("\nEnter player's age: ");
 				int age = myScan.nextInt();
 				myScan.nextLine();
 				
 				//prompt for user's team name
-				System.out.println("Enter player's team name: ");
+				System.out.println("\nEnter player's team name: ");
 				String teamName = myScan.nextLine();
 				if(name.charAt(0) >= 48 && name.charAt(0) <= 57) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid team name, try again!" + ANSI_RESET);
@@ -62,16 +68,16 @@ public class PlayerProfile {
 				}
 				
 				//prompt for user's height
-				System.out.println("Enter player's height (in cm): ");
+				System.out.println("\nEnter player's height (in cm): ");
 				double height = myScan.nextDouble();
 				
 				//prompt for user's weight
-				System.out.println("Enter player's weight (in lbs): ");
+				System.out.println("\nEnter player's weight (in lbs): ");
 				double weight = myScan.nextDouble();
 				myScan.nextLine();
 				
 				//prompt for user's position
-				System.out.println("Enter player's position (options are forward, midfielder, defender): ");
+				System.out.println("\nEnter player's position (options are forward, midfielder, defender): ");
 				String position = myScan.nextLine();
 				
 				//Check for valid position inputs
@@ -81,7 +87,7 @@ public class PlayerProfile {
 					players.add(newPlayer);
 					PlayerFiles.writePlayer(players);
 					System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
-					System.out.println("Returning to previous menu...\n");
+					System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
 					break;
 				}
 				else if(position.equalsIgnoreCase("midfielder")) {
@@ -90,7 +96,7 @@ public class PlayerProfile {
 					players.add(newPlayer);
 					PlayerFiles.writePlayer(players);
 					System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
-					System.out.println("Returning to previous menu...\n");
+					System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
 					break;
 				}
 				else if(position.equalsIgnoreCase("defender")) {
@@ -99,7 +105,7 @@ public class PlayerProfile {
 					players.add(newPlayer);
 					PlayerFiles.writePlayer(players);
 					System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
-					System.out.println("Returning to previous menu...\n");
+					System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
 					break;
 				}
 				else {
@@ -191,10 +197,11 @@ public class PlayerProfile {
 		
 		//Menu Loop
 		do {
-			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Please select a following option: \n" + ANSI_RESET);
-			System.out.println("1. Create a new player");
-			System.out.println("2. View player details");
-			System.out.println("3. Return to menu\n");
+			//Menu Options
+			System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Please select a following option: \n" + ANSI_RESET);
+			System.out.println(ANSI_BOLD + "1. " + ANSI_RESET + "Create a new player");
+			System.out.println(ANSI_BOLD + "2. " + ANSI_RESET + "View player details");
+			System.out.println(ANSI_BOLD + "3. " + ANSI_RESET + "Return to menu\n");
 			
 			//Validate User Input
 				if (myScan.hasNextInt()) {
@@ -223,6 +230,7 @@ public class PlayerProfile {
 						break;
 					case 3:
 						//case for return to previous menu
+						System.out.println(ANSI_BOLD + "\nReturning to previous menu...\n" + ANSI_BOLD);
 						return;
 				}
 		}while(choice != 3);
