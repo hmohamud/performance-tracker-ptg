@@ -237,6 +237,8 @@ public class PlayerCompare {
 		
 		//Call method to start player comparison
 		compareTwoPlayers(p1,p2);
+		
+		myScan.close();
 	}
 		
 }
