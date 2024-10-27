@@ -79,37 +79,40 @@ public class PlayerProfile {
 				//prompt for user's position
 				System.out.println("\nEnter player's position (options are forward, midfielder, defender): ");
 				String position = myScan.nextLine();
+				if(position.equalsIgnoreCase("forward") || position.equalsIgnoreCase("midfielder") || position.equalsIgnoreCase("defender")) {
 				
-				//Check for valid position inputs
-				if(position.equalsIgnoreCase("forward")) {
-					newPlayer = new Forward(name, age, teamName, height, weight, position);
-					//add new player to player list
-					players.add(newPlayer);
-					PlayerFiles.writePlayer(players);
-					System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
-					System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
-					break;
-				}
-				else if(position.equalsIgnoreCase("midfielder")) {
-					newPlayer = new MidFielder(name, age, teamName, height, weight, position);
-					//add new player to player list
-					players.add(newPlayer);
-					PlayerFiles.writePlayer(players);
-					System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
-					System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
-					break;
-				}
-				else if(position.equalsIgnoreCase("defender")) {
-					newPlayer = new Defender(name, age, teamName, height, weight, position);
-					//add new player to player list
-					players.add(newPlayer);
-					PlayerFiles.writePlayer(players);
-					System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
-					System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
-					break;
+					//Check for valid position inputs
+					if(position.equalsIgnoreCase("forward")) {
+						newPlayer = new Forward(name, age, teamName, height, weight, position);
+						//add new player to player list
+						players.add(newPlayer);
+						PlayerFiles.writePlayer(players);
+						System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
+						System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
+						break;
+					}
+					else if(position.equalsIgnoreCase("midfielder")) {
+						newPlayer = new MidFielder(name, age, teamName, height, weight, position);
+						//add new player to player list
+						players.add(newPlayer);
+						PlayerFiles.writePlayer(players);
+						System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
+						System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
+						break;
+					}
+					else if(position.equalsIgnoreCase("defender")) {
+						newPlayer = new Defender(name, age, teamName, height, weight, position);
+						//add new player to player list
+						players.add(newPlayer);
+						PlayerFiles.writePlayer(players);
+						System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Player added successfully!\n" + ANSI_RESET);
+						System.out.println(ANSI_BOLD + "Returning to previous menu...\n" + ANSI_BOLD);
+						break;
+					}
 				}
 				else {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid position, try again!" + ANSI_RESET);
+					continue;
 				}
 			}
 			catch(InputMismatchException e) {

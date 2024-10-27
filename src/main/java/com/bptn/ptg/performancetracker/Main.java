@@ -1,5 +1,8 @@
 package com.bptn.ptg.performancetracker;
 
+//Need TWo Solid Principles
+//Need Two JUNIT tests
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -22,7 +25,7 @@ public class Main {
 		//Initial Startup Message
 		System.out.println("\t*******************************************");
 		System.out.println("\t***                                     ***");
-		System.out.println("\t*** Path To Glory - Performance Tracker ***");
+		System.out.println("\t***" + ANSI_BLUE + " Path To Glory - Performance Tracker" + ANSI_RESET + " ***");
 		System.out.println("\t***                                     ***");
 		System.out.println("\t******************************************* \n");
 		
@@ -88,9 +91,13 @@ public class Main {
 					break;
 				case 3:
 					//Case To Go To BMI Calc
+					BMI p3 = new BMI();
+					p3.bmiMenu();
 					break;
 				case 4:
 					//Case For Performance Comparison
+					PlayerCompare p4 = new PlayerCompare();
+					p4.compareMenu();
 					break;
 				case 5:
 					//Case For Exit Program

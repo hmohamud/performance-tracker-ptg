@@ -49,39 +49,39 @@ private List<Player> players;
 				}
 				
 				if(p instanceof Forward) {
-					System.out.println("How many goals have you scored? Enter an integer number: ");
+					System.out.println("\nHow many goals have you scored? Enter an integer number: ");
 					goals = myScan.nextInt();
 					if (goals < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 
-					System.out.println("How many shots did you attempt? Enter an integer number: ");
+					System.out.println("\nHow many shots did you attempt? Enter an integer number: ");
 					shots = myScan.nextInt();
 					if (shots < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 				}
 				else if(p instanceof MidFielder) {
-					System.out.println("How many assists have you made? Enter an integer number: ");
+					System.out.println("\nHow many assists have you made? Enter an integer number: ");
 					assist = myScan.nextInt();
 					if (assist < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 					
-					System.out.println("How many passes have you made? Enter an integer number: ");
+					System.out.println("\nHow many passes have you made? Enter an integer number: ");
 					pass = myScan.nextInt();
 					if (pass < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 				}
 				else if(p instanceof Defender) {
-					System.out.println("How many tackles have you made? Enter an integer number: ");
+					System.out.println("\nHow many tackles have you made? Enter an integer number: ");
 					tackle = myScan.nextInt();
 					if (tackle < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 					
-					System.out.println("How many fouls did you conced? Enter an integer number: ");
+					System.out.println("\nHow many fouls did you conced? Enter an integer number: ");
 					foul = myScan.nextInt();
 					if (foul < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
@@ -120,7 +120,7 @@ private List<Player> players;
 			}
 			loopGuard = false;
 		}
-		System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Fouls added successfully!\n" + ANSI_RESET);
+		System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Stats added successfully!\n" + ANSI_RESET);
 	}
 	
 	public void playerStats() {
@@ -132,7 +132,9 @@ private List<Player> players;
 			return;
 		}
 		
+		
 		//Iterate and print available players you can view
+		System.out.print("\n");
 		for(Player p : players) {
 			System.out.println(p.getName());
 		}
@@ -157,7 +159,7 @@ private List<Player> players;
 					break;
 				}
 			}
-			//if we never called the printPlayerDetails() method, display an error for an invalid player choice
+			//if we never called the addStats() method, display an error for an invalid player choice
 			if(loopGuard == true) {
 				System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid choice for player, please try again!" + ANSI_RESET);
 			}
@@ -167,7 +169,7 @@ private List<Player> players;
 	
 	public void printStats(Player p) {
 		System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Stats for " + p.getName() + ": " + ANSI_RESET);
-		System.out.println(ANSI_BOLD + "Games Played: " + ANSI_RESET + p.getGamesPlayed());
+		System.out.println(ANSI_BOLD + "Games Played: " + ANSI_RESET + "\n " + p.getGamesPlayed());
 		if(p instanceof Forward) {
 			System.out.print(ANSI_BOLD + "Average Goals: " + ANSI_RESET);
 			System.out.printf(" %.2f\n", ((Forward) p).getAverageGoals());
@@ -198,6 +200,7 @@ private List<Player> players;
 		}
 		
 		//Iterate and print available players you can view
+		System.out.print("\n");
 		for(Player p : players) {
 			System.out.println(p.getName());
 		}

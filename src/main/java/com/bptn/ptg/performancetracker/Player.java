@@ -38,6 +38,14 @@ abstract class Player {
 		return weight;
 	}
 	
+	public void setHeight(double newHeight) {
+		height = newHeight;
+	}
+	
+	public void setWeight(double newWeight) {
+		weight = newWeight;
+	}
+	
 	public int getGamesPlayed() {
 		return gamesPlayed;
 	}
