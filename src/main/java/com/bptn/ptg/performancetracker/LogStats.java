@@ -283,7 +283,7 @@ private List<Player> players;
 			}
 			
 		}while(choice != 3);
-		//myScan.close();
+
 	}
 
 }

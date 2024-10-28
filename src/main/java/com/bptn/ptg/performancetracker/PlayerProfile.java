@@ -124,9 +124,7 @@ public class PlayerProfile {
 				System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please try again!" + ANSI_RESET);
 				continue;
 			}
-
-			//close scanner
-			Main.myScan.close();
+			
 		}while(newPlayer == null);		//loop while newPlayer instance is null
 	}
 	
