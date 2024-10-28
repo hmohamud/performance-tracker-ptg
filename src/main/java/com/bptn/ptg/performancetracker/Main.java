@@ -1,7 +1,5 @@
 package com.bptn.ptg.performancetracker;
 
-//Need TWo Solid Principles
-//Need Two JUNIT tests
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
