@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class PlayerFiles {
 	//Hold the file name as a constant variable
 	public static final String PLAYER_FILE_NAME = "players.txt";
-//	public static final String STAT_FILE_NAME = "stats.txt";
 	
 	//Method to write our created players to a file
 	public static void writePlayer(List<Player> players) {
