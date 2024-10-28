@@ -148,6 +148,7 @@ public class PlayerProfile {
 		}
 		
 		//Iterate and print available players you can view
+		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to view their details: \n" + ANSI_RESET);
 		for(Player p : players) {
 			System.out.println(p.getName());
 		}

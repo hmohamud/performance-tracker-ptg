@@ -134,6 +134,7 @@ private List<Player> players;
 		
 		
 		//Iterate and print available players you can view
+		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to update their stats: \n" + ANSI_RESET);
 		System.out.print("\n");
 		for(Player p : players) {
 			System.out.println(p.getName());
@@ -201,7 +202,7 @@ private List<Player> players;
 		}
 		
 		//Iterate and print available players you can view
-		System.out.print("\n");
+		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to view their stats: \n" + ANSI_RESET);
 		for(Player p : players) {
 			System.out.println(p.getName());
 		}

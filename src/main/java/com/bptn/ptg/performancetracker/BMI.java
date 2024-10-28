@@ -188,12 +188,9 @@ public class BMI {
 	//Method to calculate user's BMI
 	public void checkPlayerBMI() {
 		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Body Mass Index(BMI) is a useful reference for athletes." + ANSI_RESET);
-		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to calculate their BMI: \n" + ANSI_RESET);
-		
-		//Scanner myScan = new Scanner(System.in);
 		
 		//List player data for user to choose
-		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to update their height: " + ANSI_RESET);
+		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to calculate their BMI: \n" + ANSI_RESET);
 		for(String name : playerMap.keySet()) {
 			System.out.println(name);
 		}
@@ -203,7 +200,7 @@ public class BMI {
 				
 		//begin loop for user input
 		while(loopGuard) {
-			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to update height, or q to return: " + ANSI_RESET);
+			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to calculate BMI, or q to return: " + ANSI_RESET);
 			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
