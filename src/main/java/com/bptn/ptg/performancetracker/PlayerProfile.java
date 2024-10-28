@@ -46,9 +46,8 @@ public class PlayerProfile {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid name, try again!" + ANSI_RESET);
 					continue;
 				}
-				
+				//return if user wants to quit
 				if(name.equalsIgnoreCase("q")) {
-					Main.myScan.close();
 					return;
 				}
 				
