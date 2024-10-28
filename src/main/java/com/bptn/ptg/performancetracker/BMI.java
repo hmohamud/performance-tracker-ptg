@@ -21,9 +21,6 @@ public class BMI {
 	public static final String ANSI_BLUE = "\u001B[34m";
 	public static final String ANSI_BOLD = "\033[0;1m";
 	
-	//Prompt user to choose their save file
-	//Have an Option to either update height or weight
-	//Another option to calculate BMI
 	
 	//Class Constructor
 	public BMI() {
@@ -46,10 +43,10 @@ public class BMI {
 	
 	//Method to navigate players and send them to update weight
 	public void bmiWeight() {
-		Scanner myScan = new Scanner(System.in);
+		//Scanner myScan = new Scanner(System.in);
 		
 		//List player data for user to choose
-		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to update their weight: " + ANSI_RESET);
+		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to update their weight: \n" + ANSI_RESET);
 		for(String name : playerMap.keySet()) {
 			System.out.println(name);
 		}
@@ -60,7 +57,7 @@ public class BMI {
 		//begin loop for user input
 		while(loopGuard) {
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to update weight, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
@@ -85,10 +82,10 @@ public class BMI {
 	
 	//Method to navigate players and send them to update height
 	public void bmiHeight() {
-		Scanner myScan = new Scanner(System.in);
+		//Scanner myScan = new Scanner(System.in);
 		
 		//List player data for user to choose
-		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to update their height: " + ANSI_RESET);
+		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to update their height: \n" + ANSI_RESET);
 		for(String name : playerMap.keySet()) {
 			System.out.println(name);
 		}
@@ -99,7 +96,7 @@ public class BMI {
 		//begin loop for user input
 		while(loopGuard) {
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to update height, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
@@ -123,64 +120,67 @@ public class BMI {
 	
 	//Method to update user's weight
 	public void updateWeight(Player p) {
-		Scanner myScan = new Scanner(System.in);
-		
+		//variable to hold new weight
 		double weight = 0;
+		//variable to act as loop guard
 		boolean loopGuard = true;
-		
+		//begin loop for user input
 		do {
 			System.out.println("Please update your weight for our data, if applicable:.");
 			System.out.println("New Weight (in lbs) : ");
 			//Validate User Input
-			if (myScan.hasNextDouble()) {
-				weight = myScan.nextDouble();
-				myScan.nextLine();
+			if (Main.myScan.hasNextDouble()) {
+				weight = Main.myScan.nextDouble();
+				Main.myScan.nextLine();
 				if(weight < 1) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number to represent your weight in lbs!\n" + ANSI_RESET);
 					continue;
 				}
 			}
 			else {
-				myScan.next();
+				Main.myScan.next();
 				System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number to represent your weight in lbs!\n" + ANSI_RESET);
 				continue;
 			}
 			loopGuard = false;
 		}while(loopGuard);
-		
+		//call method to set the new weight
 		p.setWeight(weight);
+		//update players.txt file
 		PlayerFiles.writePlayer(players);
 		System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Weight updated successfully!\n" + ANSI_RESET);
 	}
 	
 	//Method to update user's height
 	public void updateHeight(Player p) {
-		Scanner myScan = new Scanner(System.in);
-		
+		//variable to temporarily hold new height
 		double height = 0;
+		//variable to act as loop guard
 		boolean loopGuard = true;
 		
+		//begin loop for user input
 		do {
 			System.out.println("Please update your height for our data, if applicable:.");
 			System.out.println("New Height (in cm) : ");
 			//Validate User Input
-			if (myScan.hasNextDouble()) {
-				height = myScan.nextDouble();
-				myScan.nextLine();
+			if (Main.myScan.hasNextDouble()) {
+				height = Main.myScan.nextDouble();
+				Main.myScan.nextLine();
 				if(height < 1) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number to represent your height in cm!\n" + ANSI_RESET);
 					continue;
 				}
 			}
 			else {
-				myScan.next();
+				Main.myScan.next();
 				System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number to represent your height in cm!\n" + ANSI_RESET);
 				continue;
 			}
 			loopGuard = false;
 		}while(loopGuard);
-		
+		//jump to method to set the new height
 		p.setHeight(height);
+		//update new height in players.txt
 		PlayerFiles.writePlayer(players);
 		System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_GREEN + "Height updated successfully!\n" + ANSI_RESET);
 	}
@@ -188,9 +188,9 @@ public class BMI {
 	//Method to calculate user's BMI
 	public void checkPlayerBMI() {
 		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Body Mass Index(BMI) is a useful reference for athletes." + ANSI_RESET);
-		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to calculate their BMI: " + ANSI_RESET);
+		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to calculate their BMI: \n" + ANSI_RESET);
 		
-		Scanner myScan = new Scanner(System.in);
+		//Scanner myScan = new Scanner(System.in);
 		
 		//List player data for user to choose
 		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Select a user to update their height: " + ANSI_RESET);
@@ -204,7 +204,7 @@ public class BMI {
 		//begin loop for user input
 		while(loopGuard) {
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to update height, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
@@ -267,8 +267,7 @@ public class BMI {
 		//Variable To Store User Input
 		int choice = 0;
 		
-		//Open Scanner
-		Scanner myScan = new Scanner(System.in);
+		//loop to show menu options and get user's response
 		do {
 		
 			System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Please select a following option: \n" + ANSI_RESET);
@@ -278,16 +277,16 @@ public class BMI {
 			System.out.println(ANSI_BOLD + "4. " + ANSI_RESET + "Return to menu\n");
 			
 			//Validate User Input
-			if (myScan.hasNextInt()) {
-				choice = myScan.nextInt();
-				myScan.nextLine();
+			if (Main.myScan.hasNextInt()) {
+				choice = Main.myScan.nextInt();
+				Main.myScan.nextLine();
 				if(choice < 1 || choice > 4) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number in the range 1 - 4!" + ANSI_RESET);
 					continue;
 				}
 			}
 			else {
-				myScan.next();
+				Main.myScan.next();
 				System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number in the range 1 - 4!" + ANSI_RESET);
 				continue;
 			}

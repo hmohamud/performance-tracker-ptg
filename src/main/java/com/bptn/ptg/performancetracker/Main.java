@@ -7,6 +7,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+	//static scanner variable to use across classes
+	static final Scanner myScan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		
@@ -15,7 +17,6 @@ public class Main {
 		final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 		final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 		final String ANSI_RESET = "\u001B[0m";
-		final String ANSI_GREEN = "\u001B[32m";
 		final String ANSI_BLUE = "\u001B[34m";
 		final String ANSI_BOLD = "\033[0;1m";
 		
@@ -38,7 +39,7 @@ public class Main {
 			
 			
 			//Open Scanner
-			Scanner myScan = new Scanner(System.in);
+			//Scanner myScan = new Scanner(System.in);
 			
 			
 			//Choices For User Input
@@ -103,12 +104,10 @@ public class Main {
 					//Case For Exit Program
 					System.out.println(ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Thanks for using Path to Glory...");
 					System.out.println("Exiting..." + ANSI_RESET);
-					//Close the Scanner
-					myScan.close();
 					break;
 			}
 		} while (choice != 5);
-		
+		myScan.close();
 		
 		
 

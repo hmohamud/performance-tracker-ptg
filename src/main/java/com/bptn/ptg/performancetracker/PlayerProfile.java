@@ -36,13 +36,11 @@ public class PlayerProfile {
 		
 		//Start a loop as we take in user input
 		do {
-			//Open scanner
-			Scanner myScan = new Scanner(System.in);
 			
 			try {
 				//prompt for user's name
 				System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter player's name, or type q to return: " + ANSI_RESET);
-				String name = myScan.nextLine();
+				String name = Main.myScan.nextLine();
 				
 				if(name.charAt(0) >= 48 && name.charAt(0) <= 57) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid name, try again!" + ANSI_RESET);
@@ -50,18 +48,18 @@ public class PlayerProfile {
 				}
 				
 				if(name.equalsIgnoreCase("q")) {
-					myScan.close();
+					Main.myScan.close();
 					return;
 				}
 				
 				//prompt for user's age
 				System.out.println("\nEnter player's age: ");
-				int age = myScan.nextInt();
-				myScan.nextLine();
+				int age = Main.myScan.nextInt();
+				Main.myScan.nextLine();
 				
 				//prompt for user's team name
 				System.out.println("\nEnter player's team name: ");
-				String teamName = myScan.nextLine();
+				String teamName = Main.myScan.nextLine();
 				if(name.charAt(0) >= 48 && name.charAt(0) <= 57) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid team name, try again!" + ANSI_RESET);
 					continue;
@@ -69,16 +67,16 @@ public class PlayerProfile {
 				
 				//prompt for user's height
 				System.out.println("\nEnter player's height (in cm): ");
-				double height = myScan.nextDouble();
+				double height = Main.myScan.nextDouble();
 				
 				//prompt for user's weight
 				System.out.println("\nEnter player's weight (in lbs): ");
-				double weight = myScan.nextDouble();
-				myScan.nextLine();
+				double weight = Main.myScan.nextDouble();
+				Main.myScan.nextLine();
 				
 				//prompt for user's position
 				System.out.println("\nEnter player's position (options are forward, midfielder, defender): ");
-				String position = myScan.nextLine();
+				String position = Main.myScan.nextLine();
 				if(position.equalsIgnoreCase("forward") || position.equalsIgnoreCase("midfielder") || position.equalsIgnoreCase("defender")) {
 				
 					//Check for valid position inputs
@@ -118,8 +116,8 @@ public class PlayerProfile {
 			catch(InputMismatchException e) {
 				//Error Message If Input Is Not An Integer
 				System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please try again!" + ANSI_RESET);
-				myScan.reset();
-				myScan.next();
+				Main.myScan.reset();
+				Main.myScan.next();
 				continue;
 			}
 			catch(Exception e) {
@@ -129,7 +127,7 @@ public class PlayerProfile {
 			}
 
 			//close scanner
-			myScan.close();
+			Main.myScan.close();
 		}while(newPlayer == null);		//loop while newPlayer instance is null
 	}
 	
@@ -145,7 +143,6 @@ public class PlayerProfile {
 	}
 	
 	public void viewDetails(List<Player> players) {
-		Scanner myScan = new Scanner(System.in);
 		
 		//Validate that there are players to view
 		if(players.isEmpty()) {
@@ -163,7 +160,7 @@ public class PlayerProfile {
 		//begin loop for user input
 		while(loopGuard) {
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to view details, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
@@ -195,8 +192,6 @@ public class PlayerProfile {
 		//Variable To Store User Input
 		int choice = 0;
 		
-		//Open Scanner
-		Scanner myScan = new Scanner(System.in);
 		
 		//Menu Loop
 		do {
@@ -207,16 +202,16 @@ public class PlayerProfile {
 			System.out.println(ANSI_BOLD + "3. " + ANSI_RESET + "Return to menu\n");
 			
 			//Validate User Input
-				if (myScan.hasNextInt()) {
-					choice = myScan.nextInt();
-					myScan.nextLine();
+				if (Main.myScan.hasNextInt()) {
+					choice = Main.myScan.nextInt();
+					Main.myScan.nextLine();
 					if(choice < 1 || choice > 3) {
 						System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number in the range 1 - 3!" + ANSI_RESET);
 						continue;
 					}
 				}
 				else {
-					myScan.next();
+					Main.myScan.next();
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number in the range 1 - 3!" + ANSI_RESET);
 					continue;
 				}
@@ -237,7 +232,6 @@ public class PlayerProfile {
 						return;
 				}
 		}while(choice != 3);
-		myScan.close();
 		
 	}
 	

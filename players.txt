@@ -1,5 +1,5 @@
 Hamza,27,Chelsea,177.0,172.0,forward,22,19,39
 Hazard,25,Madrid,170.0,180.0,midfielder,0,0,0
-Oscar,22,Bayern,186.0,196.0,defender,0,0,0
+Oscar,22,Bayern,186.0,196.0,defender,10,33,11
 Moe,40,AFTV,175.0,180.0,midfielder,0,0,0
 Cole,23,Chelsea,185.0,167.0,forward,22,25,29

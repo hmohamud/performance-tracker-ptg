@@ -28,7 +28,7 @@ private List<Player> players;
 	}
 	
 	public void addStats(Player p) {
-		Scanner myScan = new Scanner(System.in);
+		//Scanner myScan = new Scanner(System.in);
 		
 		boolean loopGuard = true;
 		int games = 0;
@@ -43,46 +43,46 @@ private List<Player> players;
 			try {
 				//prompt user to update gamesPlayed
 				System.out.println("How many new games have you played? Enter an integer number: ");
-				games = myScan.nextInt();
+				games = Main.myScan.nextInt();
 				if (games < 0) {
 					throw new IllegalArgumentException("Your choice is out of range!");
 				}
 				
 				if(p instanceof Forward) {
 					System.out.println("\nHow many goals have you scored? Enter an integer number: ");
-					goals = myScan.nextInt();
+					goals = Main.myScan.nextInt();
 					if (goals < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 
 					System.out.println("\nHow many shots did you attempt? Enter an integer number: ");
-					shots = myScan.nextInt();
+					shots = Main.myScan.nextInt();
 					if (shots < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 				}
 				else if(p instanceof MidFielder) {
 					System.out.println("\nHow many assists have you made? Enter an integer number: ");
-					assist = myScan.nextInt();
+					assist = Main.myScan.nextInt();
 					if (assist < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 					
 					System.out.println("\nHow many passes have you made? Enter an integer number: ");
-					pass = myScan.nextInt();
+					pass = Main.myScan.nextInt();
 					if (pass < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 				}
 				else if(p instanceof Defender) {
 					System.out.println("\nHow many tackles have you made? Enter an integer number: ");
-					tackle = myScan.nextInt();
+					tackle = Main.myScan.nextInt();
 					if (tackle < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
 					
 					System.out.println("\nHow many fouls did you conced? Enter an integer number: ");
-					foul = myScan.nextInt();
+					foul = Main.myScan.nextInt();
 					if (foul < 0) {
 						throw new IllegalArgumentException("Your choice is out of range!");
 					}
@@ -91,8 +91,8 @@ private List<Player> players;
 			}catch(InputMismatchException e) {
 				//Error Message If Input Is Not An Integer
 				System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter an integer number!" + ANSI_RESET);
-				myScan.reset();
-				myScan.next();
+				Main.myScan.reset();
+				Main.myScan.next();
 				continue;
 			}
 			catch(IllegalArgumentException e) {
@@ -124,7 +124,7 @@ private List<Player> players;
 	}
 	
 	public void playerStats() {
-		Scanner myScan = new Scanner(System.in);
+		//Scanner myScan = new Scanner(System.in);
 		
 		//Validate that there are players to view
 		if(players.isEmpty()) {
@@ -144,7 +144,7 @@ private List<Player> players;
 		
 		while(loopGuard) {
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to add stats, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
@@ -169,7 +169,7 @@ private List<Player> players;
 	
 	public void printStats(Player p) {
 		System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Stats for " + p.getName() + ": " + ANSI_RESET);
-		System.out.println(ANSI_BOLD + "Games Played: " + ANSI_RESET + "\n " + p.getGamesPlayed());
+		System.out.println(ANSI_BOLD + "Games Played: " + ANSI_RESET + " " + p.getGamesPlayed());
 		if(p instanceof Forward) {
 			System.out.print(ANSI_BOLD + "Average Goals: " + ANSI_RESET);
 			System.out.printf(" %.2f\n", ((Forward) p).getAverageGoals());
@@ -191,7 +191,8 @@ private List<Player> players;
 	}
 	
 	public void viewStats() {
-		Scanner myScan = new Scanner(System.in);
+		//Scanner myScan = new Scanner(System.in);
+		
 		
 		//Validate that there are players to view
 		if(players.isEmpty()) {
@@ -210,7 +211,7 @@ private List<Player> players;
 		
 		while(loopGuard) {
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the player's name to add stats, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
@@ -241,7 +242,7 @@ private List<Player> players;
 		int choice = 0; 
 		
 		//Open Scanner
-				Scanner myScan = new Scanner(System.in);
+				//Scanner myScan = new Scanner(System.in);
 		
 		//Menu Loop		
 		do {
@@ -252,16 +253,16 @@ private List<Player> players;
 			System.out.println(ANSI_BOLD + "3. " + ANSI_RESET + "Return to menu\n");
 			
 			//Validate User Input
-			if (myScan.hasNextInt()) {
-				choice = myScan.nextInt();
-				myScan.nextLine();
+			if (Main.myScan.hasNextInt()) {
+				choice = Main.myScan.nextInt();
+				Main.myScan.nextLine();
 				if(choice < 1 || choice > 3) {
 					System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number in the range 1 - 3!" + ANSI_RESET);
 					continue;
 				}
 			}
 			else {
-				myScan.next();
+				Main.myScan.next();
 				System.out.println("\n" + ANSI_BLACK_BACKGROUND + ANSI_RED + "Invalid input, please enter a number in the range 1 - 3!" + ANSI_RESET);
 				continue;
 			}
@@ -282,7 +283,7 @@ private List<Player> players;
 			}
 			
 		}while(choice != 3);
-		myScan.close();
+		//myScan.close();
 	}
 
 }

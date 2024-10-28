@@ -41,7 +41,9 @@ public class PlayerCompare {
 	}
 	//Method that outputs a message based on who has better stats for Forward objects
 	public void compareMessageForward(Player p1, Player p2) {
+		//check if both players are of the same position
 		if(p1 instanceof Forward && p2 instanceof Forward) {
+			//display the comparison
 			if(((Forward) p1).getGoals() > ((Forward) p2).getGoals()) {
 				System.out.println(ANSI_BOLD + p1.getName() + " has scored more goals." + ANSI_RESET);
 			}
@@ -65,7 +67,9 @@ public class PlayerCompare {
 	
 	//Method that outputs a message based on who has better stats for Forward objects
 	public void compareMessageMidFielder(Player p1, Player p2) {
+		//check if both players are of same position
 		if(p1 instanceof MidFielder && p2 instanceof MidFielder) {
+			//display the comparison
 			if(((MidFielder) p1).getAssist() > ((MidFielder) p2).getAssist()) {
 				System.out.println(ANSI_BOLD + p1.getName() + " has made more assists." + ANSI_RESET);
 			}
@@ -89,7 +93,9 @@ public class PlayerCompare {
 	
 	//Method that outputs a message based on who has better stats for Forward objects
 	public void compareMessageDefender(Player p1, Player p2) {
+		//check if both players are of same position
 		if(p1 instanceof Defender && p2 instanceof Defender) {
+			//display the comparison
 			if(((Defender) p1).getTackles() > ((Defender) p2).getTackles()) {
 				System.out.println(ANSI_BOLD + p1.getName() + " has made more tackles." + ANSI_RESET);
 			}
@@ -120,10 +126,12 @@ public class PlayerCompare {
 		
 		System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Comparing "+ p1.getName() + " and "+ p2.getName() + ANSI_RESET);
 		System.out.println(ANSI_BOLD + "Games Played: " + ANSI_RESET + " " + p1.getName() + "=" + ANSI_GREEN + p1.getGamesPlayed() + ANSI_RESET + ", " + p2.getName() + "=" + ANSI_GREEN +p2.getGamesPlayed() + ANSI_RESET);
+		//Check if players has played a game already
 		if(p1.getGamesPlayed() == 0 || p2.getGamesPlayed() == 0) {
 			System.out.println("One or more players has not played a game yet, nothing to compare at the moment");
 			return;
 		}
+		//Print players individual stats
 		if(p1 instanceof Forward && p2 instanceof Forward) {
 			System.out.println(ANSI_BOLD + "Goals Scored: " + ANSI_RESET + " " + p1.getName() + "=" + ANSI_GREEN +((Forward) p1).getGoals() + ANSI_RESET + ", " + p2.getName() + "=" + ANSI_GREEN + ((Forward) p2).getGoals() + ANSI_RESET);
 			System.out.println(ANSI_BOLD + "Shots On Target: " + ANSI_RESET + " " + p1.getName() + "=" + ANSI_GREEN + ((Forward) p1).getShots() + ANSI_RESET + ", " + p2.getName() + "=" + ANSI_GREEN + ((Forward) p2).getShots() + ANSI_RESET);
@@ -152,25 +160,23 @@ public class PlayerCompare {
 			return;
 		}
 		
-		//Open Scanner
-		Scanner myScan = new Scanner(System.in);
 		
 		//Prompt for user input
 		System.out.println("\n" + ANSI_RESET + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Please select two players of the same position from the following list you would like to compare, or q to return: \n" + ANSI_RESET);
 		for(String name : playerMap.keySet()) {
 			System.out.println(name);
 		}
-		
+		//variables for loop guards
 		boolean loopGuard1 = true;
 		boolean loopGuard2 = true;
-		
+		//declare two player objects
 		Player p1 = null;
 		Player p2 = null;
 		
 		//begin loop for user input
 		while(loopGuard1) {
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the first player's name from above list to compare, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
@@ -214,7 +220,7 @@ public class PlayerCompare {
 			}
 			
 			System.out.println("\n" + ANSI_WHITE_BACKGROUND + ANSI_BLUE + "Enter the second player's name from above list to compare, or q to return: " + ANSI_RESET);
-			String myPlayerName = myScan.nextLine();
+			String myPlayerName = Main.myScan.nextLine();
 			System.out.println("\n");
 			//check if the user wants to return to previous menu
 			if(myPlayerName.equalsIgnoreCase("q")) {
